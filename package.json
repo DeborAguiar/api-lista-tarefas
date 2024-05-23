@@ -1,0 +1,23 @@
+{
+  "name": "api-lista-tarefas",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "api-lista-tarefas"
+  },
+  "keywords": [
+    "api",
+    "tarefas"
+  ],
+  "author": "Débora Boni",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.19.2",
+    "mongoose": "^8.4.0"
+  }
+}
