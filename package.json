@@ -1,23 +1,19 @@
 {
   "name": "api-lista-tarefas",
   "version": "1.0.0",
-  "description": "",
+  "description": "Este projeto implementa uma API REST simples para gerenciar uma lista de tarefas utilizando Node.js, Express e Docker. A API permite listar, adicionar, atualizar e excluir tarefas.",
   "main": "index.js",
   "scripts": {
-    "test": "test"
+    "start": "nodemon ./server.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "repository": {
-    "type": "git",
-    "url": "api-lista-tarefas"
-  },
-  "keywords": [
-    "api",
-    "tarefas"
-  ],
-  "author": "Débora Boni",
+  "author": "",
   "license": "ISC",
   "dependencies": {
     "express": "^4.19.2",
     "mongoose": "^8.4.0"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.0"
   }
 }
