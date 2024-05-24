@@ -31,7 +31,7 @@ Mesmo sendo **não sendo recomendado ter o arquivo no repostório**, acabei opta
 
 **Nodemon**
 
-    npm run start
+    npm run dev
 
 **Docker**
 
