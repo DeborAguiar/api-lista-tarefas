@@ -4,16 +4,19 @@
   "description": "Este projeto implementa uma API REST simples para gerenciar uma lista de tarefas utilizando Node.js, Express e Docker. A API permite listar, adicionar, atualizar e excluir tarefas.",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon ./server.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "nodemon ./src/app.js",
+    "test": "jest --detectOpenHandles"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "dotenv": "^16.4.5",
     "express": "^4.19.2",
     "mongoose": "^8.4.0"
   },
   "devDependencies": {
-    "nodemon": "^3.1.0"
+    "jest": "^26.6.3",
+    "nodemon": "^3.1.0",
+    "supertest": "^6.0.1"
   }
 }

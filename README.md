@@ -26,6 +26,7 @@ npm install
 2. Crie um arquivo .env na raiz do projeto
 Defina a variável de ambiente MONGODB_URI com a sua string de conexão do MongoDB
 ```bash
+PORT = 3000
 MONGODB_URI=<sua_conexao_mongodb>
 ```
 
@@ -41,13 +42,8 @@ Este projeto utiliza Docker para containerizar a aplicação. Você pode constru
 docker build -t api-lista-tarefas .
 docker run -d -p 3000:3000 api-lista-tarefas
 ```
-## Utilização
 
-A API pode ser acessada na seguinte URL:
-
-http://localhost:3000/tasks
-
-**Endpoints**
+##Endpoints
 
 * GET /tasks: Lista todas as tarefas
 * POST /tasks: Adiciona uma nova tarefa
