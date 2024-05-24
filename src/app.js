@@ -13,11 +13,26 @@ app.use('/doc', swaggerUi.serve, swaggerUi.setup(swaggerFile))
 const connectionString = process.env.MONGO_URI;
 mongoose.connect(connectionString);
 
-const Task = mongoose.model('Task', {
-    name: String,
-    description: String,
-    done: Boolean
-});
+const Task = mongoose.model(
+    'Task',
+    new mongoose.Schema(
+        { 
+            name: String,
+            description: String,
+            done: Boolean
+        },
+        {
+            versionKey: false, // Remove the __v parameter from the schema
+            toJSON: {
+                transform: (doc, ret) => {
+                    ret.id = ret._id; // Rename _id to id
+                    delete ret._id; // Remove _id from the output
+                    delete ret.__v; // Remove __v from the output
+                }
+            }
+        }
+    )
+);
 
 
 app.get('/tasks', async (req, res) => {
