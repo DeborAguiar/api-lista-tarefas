@@ -36,6 +36,9 @@
                 },
                 "description": {
                   "example": "any"
+                },
+                "done": {
+                  "example": "any"
                 }
               }
             }
