@@ -2,7 +2,8 @@ require('dotenv').config();
 const express = require("express");
 const mongoose = require('mongoose');
 const swaggerUi = require('swagger-ui-express')
-const swaggerFile = require('../docs/swagger_output.json')
+const swaggerFile = require('../docs/swagger_output.json');
+const taskValidator = require('./validator');
 
 const app = express();
 app.use(express.json());
@@ -28,15 +29,12 @@ app.get('/tasks', async (req, res) => {
 });
 
 
-app.post('/task', async (req, res, next) => {
-    if (!req.body || !req.body.name) {
-        return res.status(400).send("POST without body not permitted!");
-    }
+app.post('/task', taskValidator, async (req, res, next) => {
     try {
         let newTask = new Task({
             name: req.body.name,
             description: req.body.description,
-            done: false
+            done: req.body.done || false
         });
         await newTask.save();
         res.status(201).send(newTask); 
@@ -46,10 +44,9 @@ app.post('/task', async (req, res, next) => {
 });
 
 
-app.put('/task/:id', async (req, res) => {
+app.put('/task/:id', taskValidator, async (req, res) => {
     const { id } = req.params;
     const updates = req.body;
-
     
     if (!mongoose.Types.ObjectId.isValid(id)) {
         return res.status(400).send('Invalid task ID');
