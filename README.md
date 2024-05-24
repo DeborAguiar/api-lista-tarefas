@@ -23,7 +23,7 @@ npm install
 ```
 
 ## Sobre o arquivo .env na raiz do projeto
-Mesmo sendo **não sendo recomendado ter o arquivo no repostório**, acabei optando por deixa-lo, para que haja uma conexão a um banco já populado com alguns registros. Sinta-se a vontade para manipulá-los.
+Mesmo **não sendo recomendado ter o arquivo no repostório**, acabei optando por deixa-lo, para que haja uma conexão a um banco já populado com alguns registros. Sinta-se a vontade para manipulá-los.
 
 
 ## Executando o servidor
