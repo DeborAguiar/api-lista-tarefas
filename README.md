@@ -6,7 +6,7 @@ Este projeto implementa uma API REST simples para gerenciar uma lista de tarefas
 
 * Listar todas as tarefas
 * Adicionar uma nova tarefa
-* Atualizar o status de uma tarefa (concluída ou não concluída)
+* Atualizar uma tarefa
 * Excluir uma tarefa
 
 
@@ -14,38 +14,60 @@ Este projeto implementa uma API REST simples para gerenciar uma lista de tarefas
 
 * Node.js instalado
 * Docker instalado
-* Banco de dados MongoDB
-## Instalação
 
-1. Instale as Dependências
+## Instalação de Dependêcias
 
 ```bash
+cd api-lista-tarefas
 npm install
 ```
 
-2. Crie um arquivo .env na raiz do projeto
-Defina a variável de ambiente MONGODB_URI com a sua string de conexão do MongoDB
-```bash
-PORT = 3000
-MONGODB_URI=<sua_conexao_mongodb>
+## Sobre o arquivo .env na raiz do projeto
+Mesmo sendo **não sendo recomendado ter o arquivo no repostório**, acabei optando por deixa-lo, para que haja uma conexão a um banco já populado com alguns registros. Sinta-se a vontade para manipulá-los.
+
+
+## Executando o servidor
+É possível executá-lo de duas maneiras:
+
+**Nodemon**
+
+    npm run start
+
+**Docker**
+
+    docker-compose build
+    docker-compose run
+
+## Endpoints
+
+* GET /tasks         - Lista todas as tarefas
+* POST /tasks        - Adiciona uma nova tarefa
+* PUT /tasks/:id     - Atualiza o status de uma tarefa
+* DELETE /tasks/:id  - Exclui uma tarefa
+
+
+## Documentação
+
+A documentação da API é gerada automaticamente usando Swagger quando o servidor estiver rodando, e pode ser acessada pela URL:
+
+```plaintext
+http://localhost:3000/doc
 ```
 
-3. Execute o servidor
-```bash
-docker-compose up -d
-```
-## Docker
+## FAQ
 
-Este projeto utiliza Docker para containerizar a aplicação. Você pode construir a imagem e executar o contêiner usando os seguintes comandos:
+### O que é Nodemon e por que usá-lo?
 
-```bash
-docker build -t api-lista-tarefas .
-docker run -d -p 3000:3000 api-lista-tarefas
-```
+Nodemon é uma ferramenta que reinicia automaticamente o servidor Node.js sempre que arquivos do projeto são modificados. Isso agiliza o desenvolvimento, eliminando a necessidade de reiniciar manualmente o servidor após cada alteração no código.
 
-##Endpoints
+### Por que usar Docker Compose?
 
-* GET /tasks: Lista todas as tarefas
-* POST /tasks: Adiciona uma nova tarefa
-* PUT /tasks/:id: Atualiza o status de uma tarefa
-* DELETE /tasks/:id: Exclui uma tarefa
+Docker Compose simplifica a orquestração de múltiplos contêineres, permitindo configurar e iniciar facilmente todos os serviços necessários para a aplicação. Isso garante ambientes consistentes e facilita a comunicação entre contêineres.
+
+### O que é Swagger e por que usá-lo?
+
+Swagger é uma ferramenta de código aberto que permite documentar, desenvolver, testar e visualizar APIs de forma fácil e eficiente. Ao usar o Swagger para documentar sua API, você fornece uma interface interativa onde os desenvolvedores podem explorar endpoints, parâmetros e respostas da API de forma intuitiva. Isso facilita a compreensão e o uso da API, além de melhorar a comunicação entre equipes de desenvolvimento.
+
+
+### Como a documentação é gerada?
+Utilizando as bibliotecas `swagger-autogen` e `swagger-ui-express` é possível fazer o mapeamento dos paths registrados na API. Esse mapeamento é feito pelo algorítimo `.docs/swagger.js`, executado pelo comando `npm run swagger` que, por sua vez, é roda toda vez que o servidor é iniciado, seja pelo Docker ou pelo Nodemon.
