@@ -10,6 +10,9 @@ COPY package*.json ./
 # Install dependencies
 RUN npm install
 
+# Build the documentation
+RUN npm run swagger
+
 # Copy the rest of the application code
 COPY . .
 

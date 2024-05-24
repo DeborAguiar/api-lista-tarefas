@@ -30,7 +30,6 @@ app.get('/tasks', async (req, res) => {
 
 app.post('/task', async (req, res, next) => {
     if (!req.body || !req.body.name) {
-        console.error("POST without body not permitted!");
         return res.status(400).send("POST without body not permitted!");
     }
     try {
